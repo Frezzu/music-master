@@ -1,0 +1,28 @@
+.history-sidebar-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+}
+
+.history-sidebar {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    min-width: 350px;
+    margin-left: -350px;
+    transition: margin-left .6s;
+}
+
+.history-sidebar.active {
+    margin-left: 0;
+}
+
+.history-sidebar-switch {
+    padding: 10px;
+}
+
+.history-sidebar-switch svg {
+    color: #fff;
+    width: 68px;
+    height: 60px;
+}
