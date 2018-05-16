@@ -4,10 +4,14 @@ import {Container as BootstrapContainer} from 'reactstrap';
 
 class ContainerWithSidebar extends Component {
     render() {
+        const props = {};
+        Object.assign(props, this.props);
+        props.sidebar = undefined;
+
         return (
             <div className="app-container">
                 {this.props.sidebar}
-                <BootstrapContainer children={this.props.children}/>
+                <BootstrapContainer {...props}/>
             </div>
         )
     }

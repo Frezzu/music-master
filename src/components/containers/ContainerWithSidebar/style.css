@@ -2,3 +2,7 @@
     background-color: gray;
     height: 100%;
 }
+
+.app-container > .container {
+    height: 100%;
+}
