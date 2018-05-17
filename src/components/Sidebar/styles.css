@@ -1,5 +1,7 @@
-.sidebar-wrapper {
+.sidebar--wrapper {
     position: absolute;
+    left: 0;
+    top: 0;
     display: flex;
     align-items: flex-start;
     z-index: 1000;
@@ -18,11 +20,11 @@
     margin-left: 0;
 }
 
-.sidebar-switch {
+.sidebar--toggle {
     padding: 5px;
 }
 
-.sidebar-switch svg {
+.sidebar--toggle svg {
     color: #fff;
     width: 68px;
     height: 60px;

@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
+import './style.css';
 
 class Profile extends Component {
     render() {
-        const props = {};
-        Object.assign(props, this.props);
-        props.children = undefined;
-
         return (
-            <div {...props}>
-                <div>
-                    <img src={this.props.image}/>
+            <div className={`profile ${this.props.className}`}>
+                <div className="profile--image-wrapper">
+                    <img
+                        className="profile--image img-thumbnail rounded-circle"
+                        src={this.props.image}
+                        alt={this.props.name}
+                    />
                 </div>
-                <div>
-                    <div>
+                <div className="profile--content">
+                    <div className="profile--content-name text-truncate">
                         {this.props.name}
                     </div>
-                    <div children={this.props.description}/>
+                    <div className="profile--content-others">
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
         )

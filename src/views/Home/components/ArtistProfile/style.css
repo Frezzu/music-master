@@ -1,0 +1,9 @@
+.artist-profile.small .profile--image-wrapper,
+.artist-profile.small .profile--image-wrapper .profile--image {
+    width: 75px;
+    height: 75px;
+}
+
+.artist-profile.small .profile--content-name {
+    font-size: 1.2rem;
+}
