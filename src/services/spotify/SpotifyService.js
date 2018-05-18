@@ -1,6 +1,6 @@
 class SpotifyService {
 
-    static ACCESS_TOKEN = 'BQAaogUuN2HB74hx4I6LKWK1YZ39LwO76-27g9rdnP7bk4CWZvTBTN4pTSpTaVMr5w2DqR9LQE-x9TXZGHs';
+    static ACCESS_TOKEN = 'BQBByZjFJOceQ12maYCYfgQclD1fHwQiQrcjU-YA5X97nRuIHQ1UQo16VgQGNCultAkt8MOensEoO5OWRWw';
 
     static BASE_URL = 'https://api.spotify.com';
     static SEARCH_URL = `${SpotifyService.BASE_URL}/v1/search`;

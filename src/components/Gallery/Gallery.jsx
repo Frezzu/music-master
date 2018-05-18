@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
+import './style.css';
 import {Col, Row} from "reactstrap";
 
 class Gallery extends Component {
     render() {
         return (
-            <Row>
+            <Row
+                className="gallery"
+            >
                 {
                     this.props.items.map((item, index) => {
                         return (
-                            <Col key={index} xs={3} md={5}>
+                            <Col
+                                key={index}
+                                className="gallery--item"
+                                xs={6}
+                                md={4}
+                            >
                                 {item}
                             </Col>
                         )
