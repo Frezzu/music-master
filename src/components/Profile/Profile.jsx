@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import './style.css';
+import './Profile.css';
 
 class Profile extends Component {
     render() {
         return (
-            <div className={`profile ${this.props.className}`}>
+            <div className={`profile ${this.props.className}`} onClick={this.props.onClick}>
                 <div className="profile--image-wrapper">
                     <img
                         className="profile--image img-thumbnail rounded-circle"

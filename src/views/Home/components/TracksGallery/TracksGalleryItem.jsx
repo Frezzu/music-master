@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style.css';
+import './RelatedArtists.css';
 import {MdPauseCircleFilled, MdPlayCircleFilled} from "react-icons/lib/md/index";
 
 class TracksGalleryItem extends Component {

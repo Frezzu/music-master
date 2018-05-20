@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style.css';
+import './ContainerWithSidebar.css';
 import {Container as BootstrapContainer} from 'reactstrap';
 
 class ContainerWithSidebar extends Component {

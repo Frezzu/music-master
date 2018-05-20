@@ -1,19 +1,22 @@
 .sidebar--wrapper {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     display: flex;
     align-items: flex-start;
     z-index: 1000;
+    height: 100%;
 }
 
 .sidebar {
     background-color: #000;
     color: #fff;
-    height: 100vh;
-    min-width: 350px;
-    margin-left: -350px;
-    transition: margin-left .6s;
+    height: 100%;
+    width: 370px;
+    margin-left: -370px;
+    transition: margin-left .6s ease;
+    overflow: auto;
+    padding: 15px 15px;
 }
 
 .sidebar.active {

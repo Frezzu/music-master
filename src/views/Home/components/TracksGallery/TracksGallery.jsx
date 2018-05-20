@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style.css';
+import './RelatedArtists.css';
 import Gallery from "../../../../components/Gallery/Gallery";
 import TracksGalleryItem from "./TracksGalleryItem";
 

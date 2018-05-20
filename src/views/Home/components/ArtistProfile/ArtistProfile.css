@@ -4,6 +4,10 @@
     height: 75px;
 }
 
+.artist-profile.small .profile--content {
+    width: calc(100% - 75px - 1rem);
+}
+
 .artist-profile.small .profile--content-name {
     font-size: 1.2rem;
 }

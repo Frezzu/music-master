@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import './style.css';
+import './Home.css';
 import ContainerWithSidebar from "../../components/containers/ContainerWithSidebar/ContainerWithSidebar";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import SpotifyService from "../../services/spotify/SpotifyService";
-import {Col, ListGroup, ListGroupItem, Row} from "reactstrap";
+import spotifyService from "../../services/spotify/SpotifyService";
+import {Col, Row} from "reactstrap";
 import HistorySidebar from "./components/HistorySidebar/HistorySidebar";
 import ArtistProfile from "./components/ArtistProfile/ArtistProfile";
 import TracksGallery from "./components/TracksGallery/TracksGallery";
+import RelatedArtists from "./components/RelatedArtists/RelatedArtists";
+import {connect} from "react-redux";
+import {addToSearchHistory} from "./home-actions";
 
 class Home extends Component {
 
@@ -21,16 +24,16 @@ class Home extends Component {
     }
 
     searchForArtist(query) {
-        SpotifyService.findArtist(query)
+        spotifyService.findArtist(query)
             .then(artist => {
                 this.setState({artist});
+                this.props.addToSearchHistory(artist);
 
-                SpotifyService.getArtistTopTracks(artist.id)
+                spotifyService.getArtistTopTracks(artist.id)
                     .then(tracks => this.setState({tracks}));
 
-                SpotifyService.getRelatedArtists(artist.id, 6)
+                spotifyService.getRelatedArtists(artist.id, 6)
                     .then(relatedArtists => this.setState({relatedArtists}));
-                console.log(this.state);
             });
     }
 
@@ -38,7 +41,7 @@ class Home extends Component {
         return (
             <ContainerWithSidebar
                 className="home"
-                sidebar={<HistorySidebar/>}
+                sidebar={<HistorySidebar items={this.props.homeReducer.searchHistory}/>}
             >
                 <Row>
                     <Col className="home--header-section">
@@ -60,30 +63,15 @@ class Home extends Component {
                             <Col xs={12}>
                                 <ArtistProfile
                                     artist={this.state.artist}
+                                    genres={true}
                                 />
                             </Col>
-                            <Col xs={12}>
+                            <Col xs={12} md={8}>
                                 <TracksGallery items={this.state.tracks}/>
                             </Col>
-                            <Col xs={12}>
-                                <ListGroup>
-                                    <ListGroupItem>
-                                        {
-                                            this.state.relatedArtists ?
-                                                this.state.relatedArtists.map((artist, index) => {
-                                                    return (
-                                                        <ArtistProfile
-                                                            small
-                                                            key={index}
-                                                            artist={artist}
-                                                        />
-                                                    )
-                                                })
-                                                :
-                                                null
-                                        }
-                                    </ListGroupItem>
-                                </ListGroup>
+                            <Col xs={12} md={4}>
+                                <RelatedArtists items={this.state.relatedArtists}
+                                                searchMethod={this.searchForArtist.bind(this)}/>
                             </Col>
                         </Row>
                         :
@@ -94,4 +82,11 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default connect(
+    (state) => {
+        return {
+            homeReducer: state.homeReducer
+        }
+    },
+    {addToSearchHistory}
+)(Home);

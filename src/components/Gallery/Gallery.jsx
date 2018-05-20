@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style.css';
+import './Gallery.css';
 import {Col, Row} from "reactstrap";
 
 class Gallery extends Component {
