@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import './Profile.css';
 
+
 class Profile extends Component {
     render() {
         return (
-            <div className={`profile ${this.props.className}`} onClick={this.props.onClick}>
+            <div className={`profile ${this.props.className}`}>
                 <div className="profile--image-wrapper">
                     <img
                         className="profile--image img-thumbnail rounded-circle"
@@ -19,6 +20,14 @@ class Profile extends Component {
                     <div className="profile--content-others">
                         {this.props.children}
                     </div>
+                    {
+                        this.props.icons ?
+                            <div className="profile--icons">
+                                {this.props.icons}
+                            </div>
+                            :
+                            null
+                    }
                 </div>
             </div>
         )

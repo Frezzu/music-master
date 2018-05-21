@@ -15,10 +15,11 @@ class HistorySidebar extends Component {
                 <h2 className="search-history--title">Search history</h2>
                 {
                     this.props.items.length ?
-                        <RelatedArtists items={this.props.items} showGenres={true}/>
+                        <RelatedArtists items={this.props.items} showGenres={true}
+                                        searchMethod={this.props.searchMethod}/>
                         :
                         <div
-                            className="text-secondary"
+                            className="search-history--empty-history"
                         >
                             Currently You haven't searched for anything.
                         </div>

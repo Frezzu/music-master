@@ -1,3 +1,7 @@
 .search-history--title {
     margin: 15px 0;
 }
+
+.search-history--empty-history {
+    color: #919496;
+}

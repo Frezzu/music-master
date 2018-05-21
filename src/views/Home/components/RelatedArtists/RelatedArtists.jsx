@@ -2,16 +2,22 @@ import React, {Component} from 'react';
 import './RelatedArtists.css';
 import {ListGroup, ListGroupItem} from "reactstrap";
 import ArtistProfile from "../ArtistProfile/ArtistProfile";
+import FaSpotify from 'react-icons/lib/fa/spotify';
+import MdSearch from 'react-icons/lib/md/search';
 
 class RelatedArtists extends Component {
 
-    render() {
 
+    render() {
         return (
             <ListGroup className="related-artists">
                 {
                     this.props.items ?
                         this.props.items.map((artist, index) => {
+
+                            console.log(artist);
+                            const spotifyLink = artist.external_urls.spotify;
+
                             return (
                                 <ListGroupItem
                                     key={index}
@@ -21,10 +27,15 @@ class RelatedArtists extends Component {
                                         small
                                         artist={artist}
                                         genres={this.props.showGenres !== undefined ? this.props.showGenres : true}
-                                        onClick={() => {
-                                            if (this.props.searchMethod !== undefined)
-                                                this.props.searchMethod(artist.name)
-                                        }}
+                                        icons={
+                                            <div>
+                                                <a href={spotifyLink} target="_blank" className="icon-link"><FaSpotify/></a>
+                                                <MdSearch onClick={() => {
+                                                    if (this.props.searchMethod !== undefined)
+                                                        this.props.searchMethod(artist.name)
+                                                }}/>
+                                            </div>
+                                        }
                                     />
                                 </ListGroupItem>
                             )

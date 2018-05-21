@@ -24,6 +24,10 @@
     margin-left: 0;
 }
 
+.sidebar--wrapper.active .sidebar--toggle svg {
+    color: #8eaf28;
+}
+
 .sidebar--toggle {
     padding: 5px;
 }
@@ -32,6 +36,11 @@
     color: #fff;
     width: 68px;
     height: 60px;
+}
+
+.sidebar--toggle svg:hover {
+    color: #8eaf28;
+    cursor: pointer;
 }
 
 @media (min-width: 576px) {

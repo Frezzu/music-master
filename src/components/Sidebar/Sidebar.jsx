@@ -13,7 +13,7 @@ class Sidebar extends Component {
 
     render() {
         return (
-            <div className="sidebar--wrapper">
+            <div className={`sidebar--wrapper ${this.state.active ? ' active' : ''}`}>
                 <div
                     className={`sidebar${this.state.active ? ' active' : ''}`}
                     children={this.props.children}

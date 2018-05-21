@@ -13,7 +13,10 @@ const addToSearchHistory = (state, artist) => {
             followers: {
                 total: artist.followers.total
             },
-            genres: artist.genres
+            genres: artist.genres,
+            external_urls: {
+                spotify: artist.external_urls.spotify
+            }
         };
 
         state.searchHistory.unshift(artistData);

@@ -41,7 +41,8 @@ class Home extends Component {
         return (
             <ContainerWithSidebar
                 className="home"
-                sidebar={<HistorySidebar items={this.props.homeReducer.searchHistory}/>}
+                sidebar={<HistorySidebar items={this.props.homeReducer.searchHistory}
+                                         searchMethod={this.searchForArtist.bind(this)}/>}
             >
                 <Row className="home--header-section">
                     <Col className="home--header">

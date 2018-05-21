@@ -10,9 +10,9 @@ class ArtistProfile extends Component {
         return (
             <Profile
                 className={`artist-profile ${this.props.small ? 'small' : ''}`}
-                onClick={this.props.onClick}
                 name={artist.name}
                 image={artist.images[0].url}
+                icons={this.props.icons}
             >
                 <div><b>Followers: </b> {artist.followers.total}</div>
                 {
