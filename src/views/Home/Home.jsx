@@ -43,8 +43,8 @@ class Home extends Component {
                 className="home"
                 sidebar={<HistorySidebar items={this.props.homeReducer.searchHistory}/>}
             >
-                <Row>
-                    <Col className="home--header-section">
+                <Row className="home--header-section">
+                    <Col className="home--header">
                         <h1 className="home--logo">MusicMaster</h1>
                         <SearchForm
                             className="home--search"
@@ -60,16 +60,27 @@ class Home extends Component {
                 {
                     this.state.artist !== null ?
                         <Row>
-                            <Col xs={12}>
+                            <Col
+                                xs={12}
+                                className="home--artist-profile"
+                            >
                                 <ArtistProfile
                                     artist={this.state.artist}
                                     genres={true}
                                 />
                             </Col>
-                            <Col xs={12} md={8}>
+                            <Col
+                                className="home--tracks-gallery"
+                                xs={12} md={8}
+                            >
+                                <h2>Albums</h2>
                                 <TracksGallery items={this.state.tracks}/>
                             </Col>
-                            <Col xs={12} md={4}>
+                            <Col
+                                className="home--related-artists"
+                                xs={12} md={4}
+                            >
+                                <h2>Related Artists</h2>
                                 <RelatedArtists items={this.state.relatedArtists}
                                                 searchMethod={this.searchForArtist.bind(this)}/>
                             </Col>

@@ -13,7 +13,7 @@ class Profile extends Component {
                     />
                 </div>
                 <div className="profile--content">
-                    <div className="profile--content-name text-truncate">
+                    <div className="profile--content-name">
                         {this.props.name}
                     </div>
                     <div className="profile--content-others">

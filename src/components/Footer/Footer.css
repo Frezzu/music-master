@@ -1,0 +1,9 @@
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px 50px;
+    color: #919496;
+}

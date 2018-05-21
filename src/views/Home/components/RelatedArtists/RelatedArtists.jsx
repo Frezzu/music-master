@@ -21,7 +21,10 @@ class RelatedArtists extends Component {
                                         small
                                         artist={artist}
                                         genres={this.props.showGenres !== undefined ? this.props.showGenres : true}
-                                        onClick={() => this.props.searchMethod(artist.name)}
+                                        onClick={() => {
+                                            if (this.props.searchMethod !== undefined)
+                                                this.props.searchMethod(artist.name)
+                                        }}
                                     />
                                 </ListGroupItem>
                             )

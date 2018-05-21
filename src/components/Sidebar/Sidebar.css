@@ -9,7 +9,7 @@
 }
 
 .sidebar {
-    background-color: #000;
+    background-color: #222326;
     color: #fff;
     height: 100%;
     width: 370px;
@@ -17,6 +17,7 @@
     transition: margin-left .6s ease;
     overflow: auto;
     padding: 15px 15px;
+    border-right: 1px solid #616467;
 }
 
 .sidebar.active {
@@ -31,4 +32,9 @@
     color: #fff;
     width: 68px;
     height: 60px;
+}
+
+@media (min-width: 576px) {
+    .sidebar {
+    }
 }

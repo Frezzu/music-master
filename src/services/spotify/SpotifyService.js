@@ -1,23 +1,29 @@
 class SpotifyService {
 
-    static ACCESS_TOKEN = 'BQCCLoLBeIq3K8gsajHHbha3txFLrgTGtE7HIGaBpcZOI2uiERODfQie8xZuwIXtrhEnd8QPPb8Z0JIJT5Q';
-
+    static TOKEN_URL = 'http://musicmaster.bmrozinski.atthouse.pl/';
     static BASE_URL = 'https://api.spotify.com';
     static SEARCH_URL = `${SpotifyService.BASE_URL}/v1/search`;
     static ARTIST_URL = `${SpotifyService.BASE_URL}/v1/artists/{id}`;
     static TOP_TRACKS_URL = `${SpotifyService.BASE_URL}/v1/artists/{id}/top-tracks`;
     static RELATED_ARTISTS_URL = `${SpotifyService.BASE_URL}/v1/artists/{id}/related-artists`;
 
-    static BASE_HEADERS = {
-        'Authorization': `Bearer ${SpotifyService.ACCESS_TOKEN}`
-    };
+    constructor() {
+        fetch(SpotifyService.TOKEN_URL, {method: 'GET'})
+            .then(response => response.json())
+            .then(json => {
+                this.accessToken = json.access_token;
+                this.baseHeaders = {
+                    'Authorization': `Bearer ${this.accessToken}`
+                };
+            });
+    }
 
 
     getArtist(id) {
         const fetchUrl = `${SpotifyService.ARTIST_URL}`;
         const fetchOptions = {
             method: 'GET',
-            headers: SpotifyService.BASE_HEADERS
+            headers: this.baseHeaders
         };
 
         return fetch(fetchUrl.replace('{id}', id), fetchOptions)
@@ -34,7 +40,7 @@ class SpotifyService {
         const fetchUrl = `${SpotifyService.TOP_TRACKS_URL}?country=PL`;
         const fetchOptions = {
             method: 'GET',
-            headers: SpotifyService.BASE_HEADERS
+            headers: this.baseHeaders
         };
 
         return fetch(fetchUrl.replace('{id}', id), fetchOptions)
@@ -51,7 +57,7 @@ class SpotifyService {
         const fetchUrl = `${SpotifyService.SEARCH_URL}?q=${query}&type=artist&limit=1`;
         const fetchOptions = {
             method: 'GET',
-            headers: SpotifyService.BASE_HEADERS
+            headers: this.baseHeaders
         };
 
         return fetch(fetchUrl, fetchOptions)
@@ -68,7 +74,7 @@ class SpotifyService {
         const fetchUrl = `${SpotifyService.RELATED_ARTISTS_URL}`;
         const fetchOptions = {
             method: 'GET',
-            headers: SpotifyService.BASE_HEADERS
+            headers: this.baseHeaders
         };
 
         return fetch(fetchUrl.replace('{id}', id), fetchOptions)

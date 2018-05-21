@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './ContainerWithSidebar.css';
 import {Container as BootstrapContainer} from 'reactstrap';
+import Footer from "../../Footer/Footer";
 
 class ContainerWithSidebar extends Component {
     render() {
@@ -10,6 +11,8 @@ class ContainerWithSidebar extends Component {
                 <BootstrapContainer>
                     {this.props.children}
                 </BootstrapContainer>
+
+                <Footer/>
             </div>
         )
     }
