@@ -3,9 +3,8 @@ import {ADD_TO_SEARCH_HISTORY, MAX_SEARCH_HISTORY_ENTRIES, SEARCH_HISTORY} from 
 
 
 const addToSearchHistory = (state, artist) => {
-    const lastInserted = state.searchHistory[0];
 
-    if (lastInserted === undefined || lastInserted.id !== artist.id) {
+    if (!state.searchHistory.map(entry => entry.id).includes(artist.id)) {
         const artistData = {
             id: artist.id,
             name: artist.name,

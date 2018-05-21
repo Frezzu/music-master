@@ -14,8 +14,6 @@ class RelatedArtists extends Component {
                 {
                     this.props.items ?
                         this.props.items.map((artist, index) => {
-
-                            console.log(artist);
                             const spotifyLink = artist.external_urls.spotify;
 
                             return (

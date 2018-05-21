@@ -30,9 +30,6 @@ class SpotifyService {
             .then(response => response.json())
             .then(json => {
                 return json;
-            })
-            .catch(reason => {
-                console.log('FETCH ERROR: ', reason);
             });
     }
 
@@ -47,9 +44,6 @@ class SpotifyService {
             .then(response => response.json())
             .then(json => {
                 return json.tracks;
-            })
-            .catch(reason => {
-                console.log('FETCH ERROR: ', reason);
             });
     }
 
@@ -64,9 +58,6 @@ class SpotifyService {
             .then(response => response.json())
             .then(json => {
                 return json.artists.items[0];
-            })
-            .catch(reason => {
-                console.log('FETCH ERROR: ', reason);
             });
     }
 
@@ -81,9 +72,6 @@ class SpotifyService {
             .then(response => response.json())
             .then(json => {
                 return json.artists.slice(0, limit);
-            })
-            .catch(reason => {
-                console.log('FETCH ERROR: ', reason);
             });
     }
 
