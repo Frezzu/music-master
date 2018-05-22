@@ -5,12 +5,9 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import spotifyService from "../../services/spotify/SpotifyService";
 import {Col, Row} from "reactstrap";
 import HistorySidebar from "./components/HistorySidebar/HistorySidebar";
-import ArtistProfile from "./components/ArtistProfile/ArtistProfile";
-import TracksGallery from "./components/TracksGallery/TracksGallery";
-import RelatedArtists from "./components/RelatedArtists/RelatedArtists";
 import {connect} from "react-redux";
 import {addToSearchHistory} from "./home-actions";
-import {FaSpotify} from "react-icons/lib/fa/index";
+import ArtistData from "./components/ArtistData/ArtistData";
 
 class Home extends Component {
 
@@ -28,74 +25,31 @@ class Home extends Component {
     searchForArtist(query) {
         spotifyService.findArtist(query)
             .then(artist => {
-                this.setState({loading: true});
-                this.setState({artist});
+                this.setState({
+                    loading: true,
+                    artist
+                });
                 this.props.addToSearchHistory(artist);
 
-                spotifyService.getArtistTopTracks(artist.id)
-                    .then(tracks => this.setState({tracks}));
-
-                spotifyService.getRelatedArtists(artist.id, 6)
-                    .then(relatedArtists => this.setState({relatedArtists}));
+                Promise
+                    .all([
+                        spotifyService.getArtistTopTracks(artist.id),
+                        spotifyService.getRelatedArtists(artist.id, 6)
+                    ])
+                    .then((values => {
+                        this.setState({
+                            tracks: values[0],
+                            relatedArtists: values[1],
+                            loading: false
+                        });
+                    }));
             })
             .catch(reason => {
                 console.log(reason);
-            })
-            .finally(() => this.setState({loading: false}));
-    }
-
-    renderArtistData() {
-        if (this.state.artist === undefined) {
-            return (
-                <Row>
-                    <Col xs={12}>
-                        <div className="home--artist-not-found">Sorry we couldn't find that artist.</div>
-                    </Col>
-                </Row>
-            )
-        } else if (this.state.artist !== null) {
-            return (
-                <Row>
-                    <Col
-                        xs={12}
-                        className="home--artist-profile"
-                    >
-                        <ArtistProfile
-                            artist={this.state.artist}
-                            genres={true}
-                            icons={
-                                <div>
-                                    <a href={this.state.artist.external_urls.spotify} target="_blank"
-                                       className="icon-link"><FaSpotify/></a>
-                                </div>
-                            }
-                        />
-                    </Col>
-                    <Col
-                        className="home--tracks-gallery"
-                        xs={12} md={8}
-                    >
-                        <h2>Albums</h2>
-                        <TracksGallery items={this.state.tracks}/>
-                    </Col>
-                    <Col
-                        className="home--related-artists"
-                        xs={12} md={4}
-                    >
-                        <h2>Related Artists</h2>
-                        <RelatedArtists items={this.state.relatedArtists}
-                                        searchMethod={this.searchForArtist.bind(this)}/>
-                    </Col>
-                </Row>
-            )
-        }
-
-
+            });
     }
 
     render() {
-
-        console.log(this.state);
 
         return (
             <ContainerWithSidebar
@@ -118,7 +72,12 @@ class Home extends Component {
                     </Col>
                 </Row>
 
-                {this.renderArtistData()}
+                <ArtistData
+                    artist={this.state.artist}
+                    relatedArtists={this.state.relatedArtists}
+                    tracks={this.state.tracks}
+                    searchForArtist={this.searchForArtist.bind(this)}
+                />
             </ContainerWithSidebar>
         )
     }
