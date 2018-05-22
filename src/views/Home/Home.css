@@ -28,7 +28,7 @@
 
 @media (min-width: 576px) {
     .home--artist-data {
-        min-height: 400px;
+        min-height: calc(100% - 200px);
     }
 
     .home--logo {

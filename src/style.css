@@ -65,3 +65,31 @@ body {
         opacity: 0;
     }
 }
+
+.baseTransition-enter {
+    opacity: 0.01;
+}
+
+.baseTransition-enter.baseTransition-enter-active {
+    opacity: 1;
+    transition: opacity 400ms ease-in;
+}
+
+.baseTransition-leave {
+    opacity: 1;
+}
+
+.baseTransition-leave.baseTransition-leave-active {
+    opacity: 0.01;
+    display: none;
+    transition: opacity 200ms ease-in;
+}
+
+.baseTransition-appear {
+    opacity: 0.01;
+}
+
+.baseTransition-appear.baseTransition-appear-active {
+    opacity: 1;
+    transition: opacity .4s ease-in;
+}

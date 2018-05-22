@@ -8,7 +8,7 @@
     min-height: 100%;
     min-width: 100%;
     z-index: 100;
-    background-color: #000000ee;
+    background-color: #00000099;
 }
 
 .loader-spinner {
@@ -16,7 +16,7 @@
     top: 30%;
     left: 50%;
     border: 8px solid #f3f3f3;
-    border-top: 4px solid #222326ee;
+    border-top: 4px solid #8eaf28;
     border-radius: 50%;
     width: 150px;
     height: 150px;
