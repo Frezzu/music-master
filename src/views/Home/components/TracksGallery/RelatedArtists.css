@@ -4,7 +4,9 @@
 }
 
 .track--image {
-    width: 100%;
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
 }
 
 .track--label {
