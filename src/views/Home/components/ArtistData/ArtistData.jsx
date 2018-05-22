@@ -7,14 +7,6 @@ import {FaSpotify} from "react-icons/lib/fa/index";
 
 class ArtistData extends Component {
 
-    componentWillMount() {
-        console.log("componentWillMount");
-    }
-
-    componentDidMount() {
-        console.log("componentDidMount")
-    }
-
     render() {
         const {artist, relatedArtists, tracks, searchForArtist} = this.props;
 

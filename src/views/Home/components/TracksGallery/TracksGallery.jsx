@@ -61,7 +61,14 @@ class TracksGallery extends Component {
         ));
 
         return (
-            <Gallery items={galleryItems}/>
+            <div>
+                {
+                    galleryItems.length > 0 ?
+                        <Gallery items={galleryItems}/>
+                        :
+                        <div className="grey-text"><em>No albums specified.</em></div>
+                }
+            </div>
         )
     }
 }

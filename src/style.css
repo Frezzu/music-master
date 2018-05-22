@@ -36,3 +36,11 @@ body {
 .icon-link {
     color: inherit;
 }
+
+.hidden {
+    visibility: hidden;
+}
+
+.grey-text {
+    color: #919496;
+}

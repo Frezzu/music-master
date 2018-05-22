@@ -8,6 +8,7 @@ import HistorySidebar from "./components/HistorySidebar/HistorySidebar";
 import {connect} from "react-redux";
 import {addToSearchHistory} from "./home-actions";
 import ArtistData from "./components/ArtistData/ArtistData";
+import PrettyLoader from "../../components/PrettyLoader/PrettyLoader";
 
 class Home extends Component {
 
@@ -39,13 +40,16 @@ class Home extends Component {
                     .then((values => {
                         this.setState({
                             tracks: values[0],
-                            relatedArtists: values[1],
-                            loading: false
+                            relatedArtists: values[1]
                         });
-                    }));
+                    }))
+                    .finally(() => this.setState({loading: false}));
             })
             .catch(reason => {
                 console.log(reason);
+                this.setState({
+                    loading: false
+                });
             });
     }
 
@@ -72,12 +76,14 @@ class Home extends Component {
                     </Col>
                 </Row>
 
-                <ArtistData
-                    artist={this.state.artist}
-                    relatedArtists={this.state.relatedArtists}
-                    tracks={this.state.tracks}
-                    searchForArtist={this.searchForArtist.bind(this)}
-                />
+                <PrettyLoader>
+                    <ArtistData
+                        artist={this.state.artist}
+                        relatedArtists={this.state.relatedArtists}
+                        tracks={this.state.tracks}
+                        searchForArtist={this.searchForArtist.bind(this)}
+                    />
+                </PrettyLoader>
             </ContainerWithSidebar>
         )
     }

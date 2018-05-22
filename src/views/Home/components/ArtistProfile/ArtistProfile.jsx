@@ -4,19 +4,22 @@ import Profile from "../../../../components/Profile/Profile";
 
 class ArtistProfile extends Component {
 
+    static ARTIST_IMAGE_PLACEHOLDER = '/images/profile-placeholder.png';
+
     render() {
         const {artist} = this.props;
+        const imageUrl = artist.images.length > 0 ? artist.images[0].url : ArtistProfile.ARTIST_IMAGE_PLACEHOLDER;
 
         return (
             <Profile
                 className={`artist-profile ${this.props.small ? 'small' : ''}`}
                 name={artist.name}
-                image={artist.images[0].url}
+                image={imageUrl}
                 icons={this.props.icons}
             >
                 <div><b>Followers: </b> {artist.followers.total}</div>
                 {
-                    this.props.genres ?
+                    this.props.genres && artist.genres.length > 0 ?
                         <div>
                             <b>Genres: </b>
                             {
@@ -29,7 +32,7 @@ class ArtistProfile extends Component {
                             }
                         </div>
                         :
-                        null
+                        <div className="grey-text"><em>No genres specified.</em></div>
                 }
             </Profile>
         )

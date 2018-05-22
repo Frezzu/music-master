@@ -8,7 +8,7 @@ const addToSearchHistory = (state, artist) => {
         const artistData = {
             id: artist.id,
             name: artist.name,
-            images: [artist.images[0]],
+            images: artist.images,
             followers: {
                 total: artist.followers.total
             },

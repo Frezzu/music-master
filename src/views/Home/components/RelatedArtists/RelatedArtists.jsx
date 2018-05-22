@@ -12,7 +12,7 @@ class RelatedArtists extends Component {
         return (
             <ListGroup className="related-artists">
                 {
-                    this.props.items ?
+                    this.props.items.length > 0 ?
                         this.props.items.map((artist, index) => {
                             const spotifyLink = artist.external_urls.spotify;
 
@@ -39,7 +39,7 @@ class RelatedArtists extends Component {
                             )
                         })
                         :
-                        null
+                        <div className="grey-text"><em>No related artist specified.</em></div>
                 }
             </ListGroup>
         )
