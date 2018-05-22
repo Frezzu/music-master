@@ -1,0 +1,21 @@
+.artist-data--artist-profile {
+    margin: 10px 0 30px 0;
+}
+
+.artist-data--artist-not-found {
+    text-align: center;
+    color: #919496;
+    font-size: 2em;
+    padding: 50px 0;
+}
+
+.artist-data--tracks-gallery + .artist-data--related-artists {
+    margin-top: 40px;
+}
+
+@media (min-width: 576px) {
+    .artist-data--tracks-gallery + .artist-data--related-artists {
+        margin-top: 0;
+        padding-left: 30px;
+    }
+}

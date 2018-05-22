@@ -23,22 +23,7 @@
 }
 
 .home--artist-data {
-    margin: 25px 15px;
-}
-
-.home--artist-profile {
-    margin: 10px 0 30px 0;
-}
-
-.home--artist-not-found {
-    text-align: center;
-    color: #919496;
-    font-size: 2em;
-    padding: 50px 0;
-}
-
-.home--tracks-gallery + .home--related-artists {
-    margin-top: 40px;
+    margin: 25px 25px;
 }
 
 @media (min-width: 576px) {
@@ -48,10 +33,5 @@
 
     .home--logo {
         font-size: 6em;
-    }
-
-    .home--tracks-gallery + .home--related-artists {
-        margin-top: 0;
-        padding-left: 40px;
     }
 }

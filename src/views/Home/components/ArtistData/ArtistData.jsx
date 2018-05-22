@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './ArtistData.css';
 import TracksGallery from "../TracksGallery/TracksGallery";
 import RelatedArtists from "../RelatedArtists/RelatedArtists";
 import ArtistProfile from "../ArtistProfile/ArtistProfile";
@@ -14,7 +15,7 @@ class ArtistData extends Component {
             return (
                 <Row>
                     <Col xs={12}>
-                        <div className="home--artist-not-found">Sorry we couldn't find that artist.</div>
+                        <div className="artist-data--artist-not-found">Sorry we couldn't find that artist.</div>
                     </Col>
                 </Row>
             )
@@ -23,7 +24,7 @@ class ArtistData extends Component {
                 <Row>
                     <Col
                         xs={12}
-                        className="home--artist-profile"
+                        className="artist-data--artist-profile"
                     >
                         <ArtistProfile
                             artist={artist}
@@ -37,14 +38,14 @@ class ArtistData extends Component {
                         />
                     </Col>
                     <Col
-                        className="home--tracks-gallery"
+                        className="artist-data--tracks-gallery"
                         xs={12} md={8}
                     >
                         <h2>Albums</h2>
                         <TracksGallery items={tracks}/>
                     </Col>
                     <Col
-                        className="home--related-artists"
+                        className="artist-data--related-artists"
                         xs={12} md={4}
                     >
                         <h2>Related Artists</h2>
