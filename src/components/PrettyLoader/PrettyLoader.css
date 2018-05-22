@@ -1,0 +1,34 @@
+.pretty-loader {
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.pretty-loader--loader {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: 100;
+    background-color: #000000ee;
+}
+
+.loader-spinner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    border: 8px solid #f3f3f3;
+    border-top: 4px solid #222326ee;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -30%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -30%) rotate(360deg);
+    }
+}

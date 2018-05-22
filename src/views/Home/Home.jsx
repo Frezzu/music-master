@@ -76,14 +76,16 @@ class Home extends Component {
                     </Col>
                 </Row>
 
-                <PrettyLoader>
-                    <ArtistData
-                        artist={this.state.artist}
-                        relatedArtists={this.state.relatedArtists}
-                        tracks={this.state.tracks}
-                        searchForArtist={this.searchForArtist.bind(this)}
-                    />
-                </PrettyLoader>
+                <Row className="home--artist-data">
+                    <PrettyLoader loading={this.state.loading}>
+                        <ArtistData
+                            artist={this.state.artist}
+                            relatedArtists={this.state.relatedArtists}
+                            tracks={this.state.tracks}
+                            searchForArtist={this.searchForArtist.bind(this)}
+                        />
+                    </PrettyLoader>
+                </Row>
             </ContainerWithSidebar>
         )
     }

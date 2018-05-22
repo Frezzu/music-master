@@ -6,9 +6,9 @@ import {Col, Row} from "reactstrap";
 import {FaSpotify} from "react-icons/lib/fa/index";
 
 class ArtistData extends Component {
-
     render() {
         const {artist, relatedArtists, tracks, searchForArtist} = this.props;
+
 
         if (artist === undefined) {
             return (

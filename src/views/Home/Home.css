@@ -22,16 +22,12 @@
     text-align: center;
 }
 
-/*.home--header-section {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -40%);
-    width: 100%;
-}*/
+.home--artist-data {
+    margin: 25px 15px;
+}
 
 .home--artist-profile {
-    margin: 50px 0 30px 0;
+    margin: 10px 0 30px 0;
 }
 
 .home--artist-not-found {
@@ -46,6 +42,10 @@
 }
 
 @media (min-width: 576px) {
+    .home--artist-data {
+        min-height: 400px;
+    }
+
     .home--logo {
         font-size: 6em;
     }

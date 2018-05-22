@@ -14,7 +14,7 @@ class Profile extends Component {
                     />
                 </div>
                 <div className="profile--content">
-                    <div className="profile--content-name">
+                    <div className="profile--content-name text-truncate">
                         {this.props.name}
                     </div>
                     <div className="profile--content-others">
