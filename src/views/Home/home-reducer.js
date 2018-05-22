@@ -1,5 +1,9 @@
-import cookies from 'react-cookies';
-import {ADD_TO_SEARCH_HISTORY, MAX_SEARCH_HISTORY_ENTRIES, SEARCH_HISTORY} from "./home-constants";
+import {
+    ADD_TO_SEARCH_HISTORY,
+    CLEAR_SEARCH_HISTORY,
+    MAX_SEARCH_HISTORY_ENTRIES,
+    SEARCH_HISTORY
+} from "./home-constants";
 
 
 const addToSearchHistory = (state, artist) => {
@@ -23,22 +27,28 @@ const addToSearchHistory = (state, artist) => {
         if (state.searchHistory.length > MAX_SEARCH_HISTORY_ENTRIES)
             state.searchHistory.pop();
 
-        cookies.save(SEARCH_HISTORY, state.searchHistory);
+        localStorage.setItem(SEARCH_HISTORY, JSON.stringify(state.searchHistory));
     }
 
     return state;
 };
 
-export default (state = {}, action) => {
-    state.searchHistory = cookies.load(SEARCH_HISTORY);
+const clearSearchHistory = (state) => {
+    state.searchHistory = [];
+    localStorage.setItem(SEARCH_HISTORY, JSON.stringify(state.searchHistory));
 
-    if (state.searchHistory === undefined) {
-        state.searchHistory = [];
-    }
+    return state;
+};
+
+export default (state = {}, action) => {
+    state.searchHistory = localStorage.getItem(SEARCH_HISTORY) === null ? [] : JSON.parse(localStorage.getItem(SEARCH_HISTORY));
 
     switch (action.type) {
         case ADD_TO_SEARCH_HISTORY:
             return addToSearchHistory(state, action.artist);
+
+        case CLEAR_SEARCH_HISTORY:
+            return clearSearchHistory(state);
 
         default:
             return state;

@@ -5,3 +5,20 @@
 .search-history--empty-history {
     color: #919496;
 }
+
+.search-history--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-history--trash-icon {
+    width: 48px;
+    height: 48px;
+    color: #fff;
+}
+
+.search-history--trash-icon:hover {
+    color: #8eaf28;
+    cursor: pointer;
+}

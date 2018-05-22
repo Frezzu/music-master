@@ -41,9 +41,27 @@ body {
 }
 
 .hidden {
-    visibility: hidden;
+    opacity: 0;
 }
 
 .grey-text {
     color: #919496;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
