@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css'
-import registerServiceWorker from './registerServiceWorker';
+import './style.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './views/Home/Home';
 import {Provider} from "react-redux";
@@ -21,5 +20,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-
-registerServiceWorker();

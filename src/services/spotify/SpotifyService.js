@@ -1,6 +1,6 @@
 class SpotifyService {
 
-    static TOKEN_URL = 'http://musicmaster.bmrozinski.atthouse.pl/api2';
+    static TOKEN_URL = '/api/token';
     static BASE_URL = 'https://api.spotify.com';
     static SEARCH_URL = `${SpotifyService.BASE_URL}/v1/search`;
     static ARTIST_URL = `${SpotifyService.BASE_URL}/v1/artists/{id}`;
