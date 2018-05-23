@@ -4,6 +4,8 @@ import {ListGroup, ListGroupItem} from "reactstrap";
 import ArtistProfile from "../ArtistProfile/ArtistProfile";
 import FaSpotify from 'react-icons/lib/fa/spotify';
 import MdSearch from 'react-icons/lib/md/search';
+import {connect} from "react-redux";
+import {toggleSidebar} from "../../../../components/Sidebar/sidebar-actions";
 
 class RelatedArtists extends Component {
 
@@ -29,8 +31,10 @@ class RelatedArtists extends Component {
                                             <div>
                                                 <a href={spotifyLink} target="_blank" className="icon-link"><FaSpotify/></a>
                                                 <MdSearch onClick={() => {
-                                                    if (this.props.searchMethod !== undefined)
-                                                        this.props.searchMethod(artist.name)
+                                                    if (this.props.searchMethod !== undefined) {
+                                                        this.props.searchMethod(artist.name);
+                                                        this.props.toggleSidebar(true);
+                                                    }
                                                 }}/>
                                             </div>
                                         }
@@ -46,4 +50,9 @@ class RelatedArtists extends Component {
     }
 }
 
-export default RelatedArtists;
+export default connect(
+    null,
+    {
+        toggleSidebar
+    }
+)(RelatedArtists);
