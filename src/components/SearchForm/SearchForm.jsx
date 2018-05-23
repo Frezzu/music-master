@@ -7,7 +7,8 @@ class SearchForm extends Component {
         return (
             <Form {...this.props}>
                 <InputGroup>
-                    <Input name="searchInput" placeholder={this.props.placeholder} disabled={this.props.disabled}/>
+                    <Input name="searchInput" placeholder={this.props.placeholder} disabled={this.props.disabled}
+                           onFocus={this.props.onFocus}/>
                     <InputGroupAddon addonType="append">
                         <Button type="submit" color="secondary">
                             <MdSearch/>

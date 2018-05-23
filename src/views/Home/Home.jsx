@@ -10,6 +10,7 @@ import {addToSearchHistory} from "./home-actions";
 import ArtistData from "./components/ArtistData/ArtistData";
 import PrettyLoader from "../../components/PrettyLoader/PrettyLoader";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {toggleSidebar} from "../../components/Sidebar/sidebar-actions";
 
 class Home extends Component {
 
@@ -74,6 +75,7 @@ class Home extends Component {
                                 event.preventDefault();
                                 this.searchForArtist(event.target.searchInput.value);
                             }}
+                            onFocus={() => this.props.toggleSidebar(true)}
                         />
                     </Col>
                 </Row>
@@ -108,6 +110,7 @@ export default connect(
         }
     },
     {
-        addToSearchHistory
+        addToSearchHistory,
+        toggleSidebar
     }
 )(Home);
