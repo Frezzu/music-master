@@ -12,7 +12,7 @@ class ArtistProfile extends Component {
 
         return (
             <Profile
-                className={`artist-profile ${this.props.small ? 'small' : ''}`}
+                className={`artist-profile ${this.props.small ? 'small' : ''} ${this.props.mainArtist ? 'artist-profile--main-artist' : ''}`}
                 name={artist.name}
                 image={imageUrl}
                 icons={this.props.icons}
@@ -39,5 +39,9 @@ class ArtistProfile extends Component {
     }
 
 }
+
+ArtistProfile.defaultProps = {
+    mainArtist: false
+};
 
 export default ArtistProfile;

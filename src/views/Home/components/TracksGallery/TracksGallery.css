@@ -1,11 +1,12 @@
 .track {
     position: relative;
     border: 1px solid #222326;
+    max-width: 100%;
 }
 
 .track--image {
-    width: 210px;
-    height: 210px;
+    width: 100%;
+    max-height: 220px;
     object-fit: cover;
 }
 
@@ -18,7 +19,7 @@
     background-color: #000000bb;
     color: #fff;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 0.7rem;
 }
 
 .track--toggle {
@@ -48,4 +49,14 @@
     opacity: 1;
     animation: fade-in;
     animation-duration: .5s;
+}
+
+@media (min-width: 576px) {
+    .track--label {
+        font-size: 1.0rem;
+    }
+
+    .track--image {
+        height: 200px;
+    }
 }

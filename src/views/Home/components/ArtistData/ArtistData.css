@@ -16,6 +16,5 @@
 @media (min-width: 576px) {
     .artist-data--tracks-gallery + .artist-data--related-artists {
         margin-top: 0;
-        padding-left: 30px;
     }
 }

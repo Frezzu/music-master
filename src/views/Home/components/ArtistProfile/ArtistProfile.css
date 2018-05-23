@@ -1,13 +1,44 @@
-.artist-profile.small .profile--image-wrapper,
+.artist-profile {
+    font-size: 1rem;
+}
+
+.artist-profile.small {
+    font-size: .8rem
+}
+
+.artist-profile.small .profile--content-name {
+    font-size: 1.4rem;
+}
+
+.artist-profile.small .profile--image-wrapper {
+    max-width: 75px;
+}
+
 .artist-profile.small .profile--image-wrapper .profile--image {
-    width: 75px;
-    height: 75px;
+    width: 100%;
+    max-height: 75px;
 }
 
 .artist-profile.small .profile--content {
     width: calc(100% - 75px - 1rem);
 }
 
-.artist-profile.small .profile--content-name {
-    font-size: 1.2rem;
+@media (max-width: 576px) {
+    .artist-profile {
+        font-size: initial;
+    }
+
+    .profile.artist-profile--main-artist {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile.artist-profile--main-artist .profile--image-wrapper {
+        width: 250px;
+        margin-bottom: 25px;
+    }
+
+    .profile.artist-profile--main-artist .profile--image {
+        height: 250px;
+    }
 }

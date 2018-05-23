@@ -27,6 +27,7 @@ class ArtistData extends Component {
                         className="artist-data--artist-profile"
                     >
                         <ArtistProfile
+                            mainArtist
                             artist={artist}
                             genres={true}
                             icons={
