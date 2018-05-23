@@ -42,7 +42,7 @@ class ArtistData extends Component {
                         className="artist-data--tracks-gallery"
                         xs={12} md={8}
                     >
-                        <h2>Albums</h2>
+                        <h2>Top Tracks</h2>
                         <TracksGallery items={tracks}/>
                     </Col>
                     <Col
