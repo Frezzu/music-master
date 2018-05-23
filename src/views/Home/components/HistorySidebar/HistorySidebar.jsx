@@ -5,7 +5,7 @@ import MdHighlightRemove from "react-icons/lib/md/highlight-remove";
 import Sidebar from "../../../../components/Sidebar/Sidebar";
 import RelatedArtists from "../RelatedArtists/RelatedArtists";
 import {MdDeleteForever} from "react-icons/lib/md/index";
-import {clearSearchHistory} from "../../home-actions";
+import {clearSearchHistory, removeFromSearchHistory} from "../../home-actions";
 import connect from "react-redux/es/connect/connect";
 
 class HistorySidebar extends Component {
@@ -24,14 +24,17 @@ class HistorySidebar extends Component {
                     <h2 className="search-history--title">Search history</h2>
                     <MdDeleteForever
                         className="search-history--trash-icon"
-                        onClick={() => this.forceUpdate(this.clearSearchHistory())}
+                        onClick={() => this.clearSearchHistory()}
                     />
                 </div>
 
                 {
                     this.props.homeReducer.searchHistory.length ?
-                        <RelatedArtists items={this.props.homeReducer.searchHistory} showGenres={true}
-                                        searchMethod={this.props.searchMethod}/>
+                        <RelatedArtists
+                            items={this.props.homeReducer.searchHistory}
+                            showGenres={true}
+                            searchMethod={this.props.searchMethod}
+                        />
                         :
                         <div
                             className="search-history--empty-history"
@@ -45,12 +48,13 @@ class HistorySidebar extends Component {
 }
 
 export default connect(
-    (state) => {
+    state => {
         return {
             homeReducer: state.homeReducer
         }
     },
     {
-        clearSearchHistory
+        clearSearchHistory,
+        removeFromSearchHistory
     }
 )(HistorySidebar);

@@ -2,11 +2,12 @@ import {
     ADD_TO_SEARCH_HISTORY,
     CLEAR_SEARCH_HISTORY,
     MAX_SEARCH_HISTORY_ENTRIES,
+    REMOVE_FROM_SEARCH_HISTORY,
     SEARCH_HISTORY
 } from "./home-constants";
 
 
-const addToSearchHistory = (state, artist) => {
+const addToSearchHistory = (state = {}, artist) => {
 
     if (!state.searchHistory.map(entry => entry.id).includes(artist.id)) {
         const artistData = {
@@ -33,19 +34,32 @@ const addToSearchHistory = (state, artist) => {
     return state;
 };
 
-const clearSearchHistory = (state) => {
-    state.searchHistory = [];
-    localStorage.setItem(SEARCH_HISTORY, JSON.stringify(state.searchHistory));
+const removeFromSearchHistoryReducer = (state = {}, artist) => {
+    const searchHistory = state.searchHistory;
+    searchHistory.splice(state.searchHistory.indexOf(artist) - 1, 1);
 
-    return state;
+    localStorage.setItem(SEARCH_HISTORY, JSON.stringify(searchHistory));
+
+    return {...state, searchHistory};
 };
 
-export default (state = {}, action) => {
-    state.searchHistory = localStorage.getItem(SEARCH_HISTORY) === null ? [] : JSON.parse(localStorage.getItem(SEARCH_HISTORY));
+const clearSearchHistory = (state = {}) => {
+    localStorage.setItem(SEARCH_HISTORY, JSON.stringify([]));
+
+    return {...state, searchHistory: []};
+};
+
+export default (state = {
+                    searchHistory: localStorage.getItem(SEARCH_HISTORY) === null ? [] : JSON.parse(localStorage.getItem(SEARCH_HISTORY))
+                },
+                action) => {
 
     switch (action.type) {
         case ADD_TO_SEARCH_HISTORY:
             return addToSearchHistory(state, action.artist);
+
+        case REMOVE_FROM_SEARCH_HISTORY:
+            return removeFromSearchHistoryReducer(state, action.artist);
 
         case CLEAR_SEARCH_HISTORY:
             return clearSearchHistory(state);
