@@ -53,4 +53,8 @@
         width: 370px;
         margin-left: -370px;
     }
+
+    .sidebar--toggle {
+        padding: 12px 12px;
+    }
 }
